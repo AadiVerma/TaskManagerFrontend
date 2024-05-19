@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-axios.defaults.baseURL = `http://localhost:8080`;
+axios.defaults.baseURL = `https://taskmanagerbackend-7vjc.onrender.com`;
 export  async function AddTask(data){
     try {
         const result=await axios.post('./Task/add',data);
