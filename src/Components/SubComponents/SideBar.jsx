@@ -42,10 +42,10 @@ export default function SideBar({setAlltasks,setImportant,setCompleted,setProgre
           <img src={Image} alt="Image" />
           </div>
             <div className="mt-[30%]">
-                <h1 className="mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer hover:bg-[#121212] p-4 rounded-lg"><LuLayoutDashboard className="text-xl mt-1"/> All Tasks</h1>
-                <h1 className="mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer hover:bg-[#121212] p-4 rounded-lg"><IoGitNetwork className="text-xl mt-1"/> Important</h1>
-                <h1 className="mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer hover:bg-[#121212] p-4 rounded-lg"><IoCloudDoneSharp className="text-xl mt-1"/> Completed</h1>
-                <h1 className="mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer hover:bg-[#121212] p-4 rounded-lg"><GiProgression className="text-xl mt-1"/>Progress</h1>
+                <h1 className={`mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 ${Alltask?"text-blue-600 bg-[#121212]":""} cursor-pointer hover:bg-[#121212] p-4 rounded-lg`} onClick={AllTaskhandler}><LuLayoutDashboard className="text-xl mt-1"/> All Tasks</h1>
+                <h1 className={`mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer ${Important?"text-blue-600 bg-[#121212]":""} hover:bg-[#121212] p-4 rounded-lg`} onClick={ImportantHandler}><IoGitNetwork className="text-xl mt-1"/> Important</h1>
+                <h1 className={`mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer ${CompletedTask?"text-blue-600 bg-[#121212]":""} hover:bg-[#121212] p-4 rounded-lg`} onClick={CompletedHandler}><IoCloudDoneSharp className="text-xl mt-1"/> Completed</h1>
+                <h1 className={`mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer ${ProgressTask?"text-blue-600 bg-[#121212]":""} hover:bg-[#121212] p-4 rounded-lg`} onClick={ProgressHandler}><GiProgression className="text-xl mt-1"/>Progress</h1>
             </div>
             <div className="mt-[40%]">
            <h1 className="mb-4 text-xl font-newfont font-bold flex gap-4 hover:text-blue-600 cursor-pointer hover:bg-[#121212] p-4 rounded-lg" onClick={handleLogout}><LuLogOut className="text-3xl mt-1" />Log Out</h1>
