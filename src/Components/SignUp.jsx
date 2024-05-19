@@ -11,8 +11,6 @@ export default function SignUP(){
     const [firstName,setFirstName]=useState("");
     const [lastName,setLastName]=useState("");
     const handleSubmit=async()=>{
-        console.log(username);
-        console.log(password);
        try{
         const data=await signUp({
             username,
@@ -33,7 +31,7 @@ export default function SignUP(){
                 progress: undefined,
                 theme: "dark",
                 });
-            Navigate('/');
+            Navigate('/SignIn');
         } else {
             toast.error('SignUp Failed', {
                 position: "top-right",
@@ -45,10 +43,9 @@ export default function SignUP(){
                 progress: undefined,
                 theme: "dark",
                 });
-            console.log("Sign-in unsuccessful");
         }
        }catch(error){
-        console.log(error);
+        console.error(error);
        }
         
     }

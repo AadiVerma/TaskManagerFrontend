@@ -3,8 +3,8 @@ import { useState ,useEffect} from "react";
 import Card from "./Card";
 import Addtask from "./Addtask"
 import Delete from "./DeleteTask";
-import { GetTask } from "../Helpers/Tasks"; 
-export default function AllTasks(){
+import { CompletedTasks } from "../Helpers/Tasks"; 
+export default function Completed(){
     const months=["Jan", "Feb","Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct","Nov","Dec"];
     const [addtask,setAddTask]=useState(false);
     const [del,setdel]=useState(false);
@@ -19,33 +19,17 @@ export default function AllTasks(){
     },[])
     useEffect(()=>{
         const fetchData=async()=>{
-          const datas=await GetTask();
-          setData(datas.Alltasks);
+          const datas=await CompletedTasks(); 
+          setData(datas);
         }
         fetchData();
     },[del, taskAdded])
-    useEffect(() => {
-        if (taskAdded) {
-            setTaskAdded(false);
-        }
-    }, [taskAdded]);
-   const Addtasks=()=>{
-    setAddTask(true);
-   }
     return (
         <div className="w-[85%] text-white bg-[#212121] rounded-lg h-fit p-5 overflow-hidden">
-            <h1 className="text-4xl font-newfont font-bold">All Tasks</h1>
-            {/* <div className="flex justify-evenly mt-6">
-                {dates.map((d)=>{
-                    return <DateSlider date={d} day={"Th"} active={d==3?true:false}/>
-                })}
-            </div> */}
+            <h1 className="text-4xl font-newfont font-bold">Completed Tasks</h1>
+
             <div className="flex justify-between mt-10 mb-10">
                 <h2 className="flex text-3xl font-newfont font-bold">{months[month]}, {date}</h2>
-                <div className="flex gap-4">
-                    <h2 className="text-2xl font-newfont font-bold mt-1">Add Task</h2>
-                    <h2 className="text-2xl font-bold cursor-pointer rounded-lg pl-6 pr-6 pt-1 pb-2 bg-[#121212] " onClick={Addtasks}>+</h2>
-                </div>
             </div>
             {addtask && <Addtask setAddTask={setAddTask} setTaskAdded={setTaskAdded}/>}
             {del && <Delete setdel={setdel} taskId={key}/>}

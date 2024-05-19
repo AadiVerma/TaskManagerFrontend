@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-axios.defaults.baseURL = `https://taskmanagerbackend-7vjc.onrender.com`;
+axios.defaults.baseURL = `http://localhost:8080`;
 export  async function AddTask(data){
     try {
         const result=await axios.post('./Task/add',data);
@@ -30,6 +30,33 @@ export async function GetTask(){
         console.log(error);
     }
 }
+export async function ImportTasks(){
+    try{
+        const result=await axios.get('./Task/important');
+        return result.data;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
+export async function CompletedTasks(){
+    try{
+        const result=await axios.get('./Task/completed');
+        return result.data;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
+export async function ProgressTasks(){
+    try{
+        const result=await axios.get('./Task/progress');
+        return result.data;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
 export  async function EditTask(){
     try {
         const result=await axios.post('./Task/edit/:taskId'); 
@@ -43,7 +70,6 @@ export  async function EditTask(){
 export async function signIn(data){
     try{
      const result=await axios.post('./account/signin',data);
-     console.log(result);
      return result;
     }
     catch (error) { 

@@ -9,7 +9,6 @@ export default function Delete({setdel,taskId}){
           }
     }
     const DeletHandler=(e)=>{
-      console.log(taskId);
       DeleteTask(taskId);
       setdel(false);
     }

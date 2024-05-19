@@ -9,8 +9,6 @@ export default function SignIn(){
     const [username,setUserName]=useState("");
     const [password,setPassword]=useState("");
     const handleSubmit=async()=>{
-        console.log(username);
-        console.log(password);
        try{
         const data=await signIn({
             username,
@@ -29,6 +27,7 @@ export default function SignIn(){
                 progress: undefined,
                 theme: "dark",
                 });
+                localStorage.setItem("userName",username);
             Navigate('/');
         } else {
             toast.error('Login Failed', {
@@ -41,10 +40,9 @@ export default function SignIn(){
                 progress: undefined,
                 theme: "dark",
                 });
-            console.log("Sign-in unsuccessful");
         }
        }catch(error){
-        console.log(error);
+        console.error(error);
        }
         
     }
