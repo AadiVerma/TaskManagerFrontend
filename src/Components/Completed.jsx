@@ -3,11 +3,13 @@ import { useState ,useEffect} from "react";
 import Card from "./Card";
 import Addtask from "./Addtask"
 import Delete from "./DeleteTask";
+import Edit from './Edittask'
 import { CompletedTasks } from "../Helpers/Tasks"; 
 export default function Completed(){
     const months=["Jan", "Feb","Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct","Nov","Dec"];
     const [addtask,setAddTask]=useState(false);
     const [del,setdel]=useState(false);
+    const [edit,setEdit]=useState(false);
     const [data,setData]=useState([]);
     const [key,setkey]=useState("");
     const [taskAdded, setTaskAdded] = useState(false);
@@ -33,9 +35,10 @@ export default function Completed(){
             </div>
             {addtask && <Addtask setAddTask={setAddTask} setTaskAdded={setTaskAdded}/>}
             {del && <Delete setdel={setdel} taskId={key}/>}
+            {edit && <Edit setEdit={setEdit} taskId={key}/>}
             <div className="pt-4 pl-2 rounded-xl flex flex-wrap gap-2 ">
                 {data && data.map((d) => (
-                    <Card key={d._id} color={d.color} heading={d.heading} para={d.para} setdel={setdel} setkey={setkey} id={d._id} date={d.date}/>
+                    <Card key={d._id} color={d.color} heading={d.heading} para={d.para} setdel={setdel} setkey={setkey} id={d._id} date={d.date} maskAsCompleted={d.maskAsCompleted} ImportantTasks={d.importanttasks} setEdit={setEdit}/>
                 ))}
             </div>
         </div>

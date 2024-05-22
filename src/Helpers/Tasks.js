@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-axios.defaults.baseURL = `https://taskmanagerbackend-7vjc.onrender.com`;
+axios.defaults.baseURL = `http://localhost:8080`;
 export  async function AddTask(data){
     try {
         const result=await axios.post('./Task/add',data);
@@ -57,9 +57,9 @@ export async function ProgressTasks(){
         console.log(error);
     }
 }
-export  async function EditTask(){
+export  async function EditTask(taskId,data){
     try {
-        const result=await axios.post('./Task/edit/:taskId'); 
+        const result=await axios.put(`./Task/edit/${taskId}`,{data}); 
         console.log(result);
         return result;
     }
@@ -67,6 +67,38 @@ export  async function EditTask(){
         console.log(error);
     }
 }
+export async function MakeItImportant(taskId,ImportantTasks){
+    try {
+        const result=await axios.post(`./Task/important/${taskId}`,{ImportantTasks}); 
+        console.log(result);
+        return result;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
+
+export async function GetParticularTask(taskId){
+    try {
+        const result=await axios.get(`./Task/getparticulartask/${taskId}`); 
+        return result;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
+
+export async function changeMarkAsCompleted(taskId){
+    try {
+        const result=await axios.post(`./Task/markascomplete/${taskId}`); 
+        console.log(result);
+        return result;
+    }
+    catch (error) { 
+        console.log(error);
+    }
+}
+
 export async function signIn(data){
     try{
      const result=await axios.post('./account/signin',data);
